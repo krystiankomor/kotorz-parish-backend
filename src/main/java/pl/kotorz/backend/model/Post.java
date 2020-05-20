@@ -39,15 +39,6 @@ public class Post {
 	@Column(columnDefinition = "TEXT", nullable = true)
 	private String extraBody;
 
-	public Post() { }
-
-	public Post(String title, String body, String extraBody) {
-		this.title = title;
-		this.slug = new Slugify().slugify(title);
-		this.body = body;
-		this.extraBody = extraBody;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -62,6 +53,8 @@ public class Post {
 
 	public void setTitle(String title) {
 		this.title = title;
+		
+		setSlug(makeSlug());
 	}
 
 	public String getSlug() {
@@ -94,6 +87,10 @@ public class Post {
 
 	public void setExtraBody(String extraBody) {
 		this.extraBody = extraBody;
+	}
+	
+	private String makeSlug() {
+		return new Slugify().slugify(this.title);
 	}
 
 }

@@ -15,7 +15,15 @@ public class InitializeSampleData implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		postRepository.save(new Post("Sample title", "Sample text", null));
-		postRepository.save(new Post("Sample title of 2nd post", "Title too long", null));
+		Post firstPost = new Post();
+		firstPost.setTitle("Sample title");
+		firstPost.setBody("Sample body");
+		postRepository.save(firstPost);
+		
+		Post secondPost = new Post();
+		secondPost.setTitle("Sample title of 2nd post");
+		secondPost.setBody("Sample body of 2nd post");
+		secondPost.setExtraBody("Sample extra body of 2nd post");
+		postRepository.save(secondPost);
 	}
 }
