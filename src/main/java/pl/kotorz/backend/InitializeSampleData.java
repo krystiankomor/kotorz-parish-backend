@@ -21,7 +21,7 @@ public class InitializeSampleData implements ApplicationRunner {
 	UserRepository userRepository;
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) {
 		User firstUser = new User();
 		firstUser.setEmail("ala@kot.pl");
 		firstUser.setName("Testowy Agent");

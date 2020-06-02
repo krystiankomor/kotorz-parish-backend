@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -20,10 +21,12 @@ import com.github.slugify.Slugify;
 
 import pl.kotorz.backend.user.User;
 
+
 @Entity
 @Validated
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Post {
 	private static final int MAX_TITLE_LENGTH = 150;
 
@@ -67,4 +70,5 @@ public class Post {
 	private String makeSlug(String title) {
 		return new Slugify().slugify(title);
 	}
+
 }
