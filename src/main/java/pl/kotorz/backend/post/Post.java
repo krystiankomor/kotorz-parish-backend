@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.validation.annotation.Validated;
@@ -20,6 +22,8 @@ import pl.kotorz.backend.user.User;
 
 @Entity
 @Validated
+@Getter
+@Setter
 public class Post {
 	private static final int MAX_TITLE_LENGTH = 150;
 
@@ -54,82 +58,13 @@ public class Post {
 	@ManyToOne
 	private User author;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
 	public void setTitle(String title) {
 		this.title = title;
 
 		setSlug(makeSlug(title));
 	}
 
-	public String getSlug() {
-		return slug;
-	}
-
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
-
-	public LocalDateTime getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(LocalDateTime createDate) {
-		this.createDate = createDate;
-	}
-
-	public LocalDateTime getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(LocalDateTime updateDate) {
-		this.updateDate = updateDate;
-	}
-
-	public String getBody() {
-		return body;
-	}
-
-	public void setBody(String body) {
-		this.body = body;
-	}
-
-	public String getExtraBody() {
-		return extraBody;
-	}
-
-	public void setExtraBody(String extraBody) {
-		this.extraBody = extraBody;
-	}
-
 	private String makeSlug(String title) {
 		return new Slugify().slugify(title);
 	}
-
-	public User getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(User author) {
-		this.author = author;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
 }
