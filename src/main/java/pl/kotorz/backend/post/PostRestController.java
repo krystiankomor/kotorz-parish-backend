@@ -18,7 +18,7 @@ public class PostRestController {
 	public Iterable<Post> getAllPosts() {
 		return postRepository.findAll();
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public Optional<Post> findById(@PathVariable Long id) {
 		return postRepository.findById(id);

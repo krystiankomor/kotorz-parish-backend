@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
 import com.github.slugify.Slugify;
@@ -29,8 +28,7 @@ public class Post {
 	@Column(name = "post_id", nullable = false)
 	private Long id;
 
-	@Column(nullable = true)
-	@Length(max = MAX_TITLE_LENGTH, message = "Title too long")
+	@Column(nullable = true, length = MAX_TITLE_LENGTH)
 	private String title;
 
 	@Column(nullable = true, length = MAX_TITLE_LENGTH)
