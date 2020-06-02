@@ -5,5 +5,5 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepository extends CrudRepository<Post, Long> {
-	public Optional<Post> findByTitle(String title);
+	Optional<Post> findByTitle(String title);
 }
