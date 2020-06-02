@@ -21,7 +21,6 @@ import com.github.slugify.Slugify;
 
 import pl.kotorz.backend.user.User;
 
-
 @Entity
 @Validated
 @Getter
@@ -48,7 +47,7 @@ public class Post {
 	@Column(nullable = false)
 	@UpdateTimestamp
 	private LocalDateTime updateDate;
-	
+
 	@Column(nullable = false)
 	private LocalDate date;
 
