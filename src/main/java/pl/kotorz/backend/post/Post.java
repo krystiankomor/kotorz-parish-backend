@@ -28,10 +28,10 @@ public class Post {
 	@Column(name = "post_id", nullable = false)
 	private Long id;
 
-	@Column(nullable = true, length = MAX_TITLE_LENGTH)
+	@Column(length = MAX_TITLE_LENGTH)
 	private String title;
 
-	@Column(nullable = true, length = MAX_TITLE_LENGTH)
+	@Column(length = MAX_TITLE_LENGTH)
 	private String slug;
 
 	@Column(nullable = false, updatable = false)
@@ -48,7 +48,7 @@ public class Post {
 	@Column(columnDefinition = "TEXT", nullable = false)
 	private String body;
 
-	@Column(columnDefinition = "TEXT", nullable = true)
+	@Column(columnDefinition = "TEXT")
 	private String extraBody;
 
 	@ManyToOne
@@ -69,7 +69,7 @@ public class Post {
 	public void setTitle(String title) {
 		this.title = title;
 
-		setSlug(makeSlug());
+		setSlug(makeSlug(title));
 	}
 
 	public String getSlug() {
@@ -112,8 +112,8 @@ public class Post {
 		this.extraBody = extraBody;
 	}
 
-	private String makeSlug() {
-		return new Slugify().slugify(this.title);
+	private String makeSlug(String title) {
+		return new Slugify().slugify(title);
 	}
 
 	public User getAuthor() {
