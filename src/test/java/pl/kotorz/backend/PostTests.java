@@ -11,13 +11,22 @@ import pl.kotorz.backend.post.Post;
 @DisplayName("The post entity test")
 public class PostTests {
 
-	@Test
-	@DisplayName("Testing the slug generation")
-	void postSlugTest() {
-		Post post = new Post();
-		post.setTitle("Zażółć gęślą jaźń.");
+    @Test
+    @DisplayName("Expect slug based on title")
+    void postSlugTestWithCorrectTitle() {
+        Post post = new Post();
+        post.setTitle("Zażółć gęślą jaźń.");
 
-		assertEquals("zazolc-gesla-jazn", post.getSlug());
-	}
+        assertEquals("zazolc-gesla-jazn", post.getSlug());
+    }
+
+    @Test
+    @DisplayName("Expect slug based on UUID")
+    void postSlugTestWithIncorrectTitle() {
+        Post post = new Post();
+        post.setTitle("!!!");
+
+        assertEquals(36, post.getSlug().length());
+    }
 
 }
