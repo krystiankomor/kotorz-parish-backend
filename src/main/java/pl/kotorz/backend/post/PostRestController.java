@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/v1/posts")
+@RequestMapping("/api/v1/posts")
 public class PostRestController {
-	@Autowired
-	PostRepository postRepository;
+    @Autowired
+    PostRepository postRepository;
 
-	@GetMapping(value = "/")
-	public Iterable<Post> getAllPosts() {
-		return postRepository.findAll();
-	}
+    @GetMapping
+    public Iterable<Post> getAllPosts() {
+        return postRepository.findAll();
+    }
 
-	@GetMapping(value = "/{id}")
-	public Post findById(@PathVariable Long id) {
-		return postRepository.findById(id).orElse(null);
-	}
+    @GetMapping("/{id}")
+    public Post findById(@PathVariable Long id) {
+        return postRepository.findById(id).orElse(null);
+    }
 
 }

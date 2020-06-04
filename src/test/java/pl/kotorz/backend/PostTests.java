@@ -12,7 +12,7 @@ import pl.kotorz.backend.post.Post;
 public class PostTests {
 
     @Test
-    @DisplayName("Expect slug based on title")
+    @DisplayName("Slug based on title")
     void postSlugTestWithCorrectTitle() {
         Post post = new Post();
         post.setTitle("Zażółć gęślą jaźń.");
@@ -21,7 +21,7 @@ public class PostTests {
     }
 
     @Test
-    @DisplayName("Expect slug based on UUID")
+    @DisplayName("Slug based on UUID")
     void postSlugTestWithIncorrectTitle() {
         Post post = new Post();
         post.setTitle("!!!");

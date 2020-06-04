@@ -28,6 +28,7 @@ import pl.kotorz.backend.user.User;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 public class Post {
     private static final int MAX_TITLE_LENGTH = 150;
 

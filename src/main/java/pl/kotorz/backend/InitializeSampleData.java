@@ -7,6 +7,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import pl.kotorz.backend.baptized.Baptized;
+import pl.kotorz.backend.baptized.BaptizedRepository;
 import pl.kotorz.backend.post.Post;
 import pl.kotorz.backend.post.PostRepository;
 import pl.kotorz.backend.user.User;
@@ -19,6 +21,9 @@ public class InitializeSampleData implements ApplicationRunner {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    BaptizedRepository baptizedRepository;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -49,6 +54,12 @@ public class InitializeSampleData implements ApplicationRunner {
         thirdPost.setAuthor(firstUser);
         thirdPost.setDate(LocalDate.of(2017, 12, 10));
         postRepository.save(thirdPost);
+
+        Baptized baptizedJanKowalski = new Baptized();
+        baptizedJanKowalski.setName("Jan Kowalski");
+        baptizedJanKowalski.setBornDate(LocalDate.of(2020, 1, 1));
+        baptizedJanKowalski.setBaptizedDate(LocalDate.of(2020, 2, 1));
+        baptizedRepository.save(baptizedJanKowalski);
 
     }
 }
