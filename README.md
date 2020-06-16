@@ -1,11 +1,9 @@
-# kotorz.pl backend
+# Kotorz Parish Backend
 
-API for Kotórz Wielki Catholic Parish website. No MVC. Just to become a full reactive service.
+API for Kotórz Wielki Catholic Parish backend service.
 
-Build on Spring Boot. TDD driven. Written in Java.
+Build on Spring Boot. Written in Java.
 
-## IDE requirements
+## Prerequisites
 
-You can use every IDE. 
-
-Be sure if it supports Lombok library. If not just install a proper plugin.
+Lombok dependency is in the project. Install proper plugin.
