@@ -7,11 +7,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import pl.kotorz.backend.util.DTOModelMapper;
+import pl.kotorz.backend.util.dto.DTOModelMapper;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * Configuration class to use {@link DTOModelMapper} by spring argument resolvers.
+ */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
