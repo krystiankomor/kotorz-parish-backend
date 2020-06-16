@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 /**
- * Entity class for store a baptized people.
+ * Entity class for store a decedent people.
  * @author krystiankomor
  */
 @Entity
@@ -41,13 +41,13 @@ public class Decedent {
     private Long age;
 
     /**
-     * Generate age of decedent.
+     * Get age of decedent lazily generated
+     *
+     * @return Age of decedent
      */
-    @PostLoad
-    @PrePersist
-    private void generateAge() {
-        if(bornDate != null && deathDate != null) {
-            age = bornDate.until(deathDate, ChronoUnit.YEARS);
-        }
+    public Long getAge() {
+        if(age == null) age = bornDate.until(deathDate, ChronoUnit.YEARS);
+
+        return age;
     }
 }

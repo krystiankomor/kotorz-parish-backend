@@ -1,19 +1,15 @@
 package pl.kotorz.backend.post;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.UUID;
-
-import javax.annotation.PostConstruct;
-import javax.persistence.*;
-
+import com.github.slugify.Slugify;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import com.github.slugify.Slugify;
-
 import pl.kotorz.backend.user.User;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * Entity class to store a post.
@@ -61,13 +57,13 @@ public class Post {
      * If generated slug is empty, it generates UUIDv4
      * which is a 36 character random value.
      */
-    @PostLoad
     @PrePersist
+    @PreUpdate
     private void makeSlug() {
         String slugFromTitle = new Slugify().slugify(title);
 
         if (slugFromTitle.length() > 0) slug = slugFromTitle;
-        else slug = UUID.randomUUID().toString();
+        else if (slug == null || slug.length() != 36) slug = UUID.randomUUID().toString();
     }
 
 }
