@@ -8,18 +8,16 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * Entity class for store a baptized people.
+ * @author krystiankomor
+ */
 @Entity
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
 public class Baptized {
-    /**
-     * The longest polish surname is 28 characters long and
-     * the longest polish name i 13 characters long so
-     * summary is 41.
-     * World's longest surname is 35 characters long.
-     */
     public static final int MAX_NAME_LENGTH = 70;
 
     @Id
