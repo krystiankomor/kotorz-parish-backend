@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import pl.kotorz.backend.baptized.Baptized;
 import pl.kotorz.backend.baptized.BaptizedRepository;
+import pl.kotorz.backend.decedent.Decedent;
+import pl.kotorz.backend.decedent.DecedentRepository;
 import pl.kotorz.backend.post.Post;
 import pl.kotorz.backend.post.PostRepository;
 import pl.kotorz.backend.user.User;
@@ -24,6 +26,9 @@ public class InitializeSampleData implements ApplicationRunner {
 
     @Autowired
     BaptizedRepository baptizedRepository;
+
+    @Autowired
+    DecedentRepository decedentRepository;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -60,6 +65,18 @@ public class InitializeSampleData implements ApplicationRunner {
         baptizedJanKowalski.setBornDate(LocalDate.of(2020, 1, 1));
         baptizedJanKowalski.setBaptizedDate(LocalDate.of(2020, 2, 1));
         baptizedRepository.save(baptizedJanKowalski);
+
+        Decedent decedentJohnSmith = new Decedent();
+        decedentJohnSmith.setName("John Smith");
+        decedentJohnSmith.setBornDate(LocalDate.of(1953, 3, 12));
+        decedentJohnSmith.setDeathDate(LocalDate.of(2020, 5, 30));
+        decedentRepository.save(decedentJohnSmith);
+
+        Decedent decedentMattMurphy = new Decedent();
+        decedentMattMurphy.setName("Matt Murphy");
+        decedentMattMurphy.setBornDate(LocalDate.of(1953, 5, 12));
+        decedentMattMurphy.setDeathDate(LocalDate.of(2020, 3, 30));
+        decedentRepository.save(decedentMattMurphy);
 
     }
 }
