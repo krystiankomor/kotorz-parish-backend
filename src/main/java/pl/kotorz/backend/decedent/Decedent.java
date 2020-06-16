@@ -46,8 +46,6 @@ public class Decedent {
      * @return Age of decedent
      */
     public Long getAge() {
-        if(age == null) age = bornDate.until(deathDate, ChronoUnit.YEARS);
-
-        return age;
+        return bornDate.until(deathDate, ChronoUnit.YEARS);
     }
 }

@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <title th:text="${status + ' - ' + error}">Error!</title>
     <style>
+        body {
+            margin: 36px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
         table td {
             vertical-align: top;
             border: solid 1px #888;
@@ -11,6 +20,7 @@
         }
         table td:first-child {
             font-weight: bold;
+            width: 25%;
         }
     </style>
 </head>
