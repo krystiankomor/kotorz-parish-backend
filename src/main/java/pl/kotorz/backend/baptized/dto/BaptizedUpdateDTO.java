@@ -7,6 +7,11 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+import pl.kotorz.backend.baptized.Baptized;
+
+/**
+ * DTO class for update operation on {@link Baptized}
+ */
 @Getter
 @Setter
 public class BaptizedUpdateDTO {

@@ -10,8 +10,8 @@ public interface BaptizedRepository extends CrudRepository<Baptized, Long> {
     /**
      * Interface for find a baptized persons in given year.
      *
-     * @param year Year of baptizing.
-     * @return Iterable of baptized in given year.
+     * @param year Year of baptizing
+     * @return Iterable of baptized in given year
      */
     @Query("select b from Baptized b where year(b.baptizedDate) = ?1")
     Iterable<Baptized> findByBaptizedYear(int year);
@@ -19,7 +19,7 @@ public interface BaptizedRepository extends CrudRepository<Baptized, Long> {
     /**
      * Interface for find all years of baptizing.
      *
-     * @return Iterable of baptizing years.
+     * @return Iterable of baptizing years
      */
     @Query("select distinct year(b.baptizedDate) from Baptized b")
     Iterable<Integer> findAllBaptizingYears();
