@@ -37,6 +37,7 @@ public class BaptizedRestController {
     public Baptized findById(@PathVariable Long id) {
         return baptizedRepository.findById(id).orElse(null);
     }
+
     /**
      * Method for create a new baptized person.
      *

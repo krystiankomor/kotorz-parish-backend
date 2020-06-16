@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
 
 import lombok.*;
@@ -56,30 +57,17 @@ public class Post {
     private User author;
 
     /**
-     * Set a title and invoke slug generation.
-     *
-     * @param title Title of the post
-     */
-    public void setTitle(String title) {
-        this.title = title;
-
-        setSlug(makeSlug(title));
-    }
-
-    /**
-     * Generate a SEO-friendly slug based on given title.
-     * If generated slug is empty, it returns UUIDv4
+     * Generate a SEO-friendly slug based on title.
+     * If generated slug is empty, it generates UUIDv4
      * which is a 36 character random value.
-     *
-     * @param title Title which is used to generate a slug
-     * @return Generated slug or a UUIDv4
      */
-    private String makeSlug(String title) {
+    @PostLoad
+    @PrePersist
+    private void makeSlug() {
         String slugFromTitle = new Slugify().slugify(title);
 
-        if (slugFromTitle.length() > 0) return slugFromTitle;
-
-        return UUID.randomUUID().toString();
+        if (slugFromTitle.length() > 0) slug = slugFromTitle;
+        else slug = UUID.randomUUID().toString();
     }
 
 }
