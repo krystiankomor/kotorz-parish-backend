@@ -58,9 +58,7 @@ public class PostRestController {
      */
     @PutMapping
     public Post updatePost(@DTO(PostUpdateDTO.class) Post post) {
-        if(post.getId() != null) return postRepository.save(post);
-
-        throw new RuntimeException("No ID was given.");
+        return postRepository.save(post);
     }
 
     /**

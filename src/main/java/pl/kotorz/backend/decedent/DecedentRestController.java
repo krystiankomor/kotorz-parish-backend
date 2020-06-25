@@ -58,9 +58,7 @@ public class DecedentRestController {
      */
     @PutMapping
     public Decedent updateDecedent(@DTO(DecedentUpdateDTO.class) Decedent decedent) {
-        if(decedent.getId() != null) return decedentRepository.save(decedent);
-
-        throw new RuntimeException("No ID was given.");
+        return decedentRepository.save(decedent);
     }
 
     /**

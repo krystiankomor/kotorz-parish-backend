@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
- * Entity class for store a baptized people.
+ * Entity class for baptized people.
  * @author krystiankomor
  */
 @Entity

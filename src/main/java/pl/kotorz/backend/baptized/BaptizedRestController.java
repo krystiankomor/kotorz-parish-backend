@@ -1,10 +1,13 @@
 package pl.kotorz.backend.baptized;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.kotorz.backend.baptized.dto.BaptizedCreationDTO;
 import pl.kotorz.backend.baptized.dto.BaptizedUpdateDTO;
 import pl.kotorz.backend.util.dto.DTO;
+
+import javax.validation.Valid;
 
 /**
  * RestController class for {@link Baptized} API.
@@ -58,9 +61,7 @@ public class BaptizedRestController {
      */
     @PutMapping
     public Baptized updateBaptized(@DTO(BaptizedUpdateDTO.class) Baptized baptized) {
-        if(baptized.getId() != null) return baptizedRepository.save(baptized);
-
-        throw new RuntimeException("No ID was given.");
+        return baptizedRepository.save(baptized);
     }
 
     /**

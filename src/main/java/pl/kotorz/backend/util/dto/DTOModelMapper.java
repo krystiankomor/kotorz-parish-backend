@@ -80,7 +80,13 @@ public class DTOModelMapper extends RequestResponseBodyMethodProcessor {
                 try {
                     field.setAccessible(true);
 
-                    return field.get(dto);
+                    Object candidate = field.get(dto);
+
+                    if(field.getAnnotation(NotNull.class) != null && candidate == null) {
+                        throw new NullPointerException("Null in NotNull ID field!");
+                    }
+
+                    return candidate;
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
