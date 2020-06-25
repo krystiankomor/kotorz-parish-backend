@@ -1,10 +1,10 @@
 package pl.kotorz.backend.post;
 
-import com.github.slugify.Slugify;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import pl.kotorz.backend.user.User;
+import pl.kotorz.backend.util.slug.Slug;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -38,7 +38,7 @@ public class Post {
     private LocalDateTime createDate;
 
     @UpdateTimestamp
-    private LocalDateTime updateDate;
+    private LocalDateTime lastUpdateDate;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -60,7 +60,7 @@ public class Post {
     @PrePersist
     @PreUpdate
     private void makeSlug() {
-        String slugFromTitle = new Slugify().slugify(title);
+        String slugFromTitle = Slug.getInstance().generateSlug(title);
 
         if (slugFromTitle.length() > 0) slug = slugFromTitle;
         else if (slug == null || slug.length() != 36) slug = UUID.randomUUID().toString();

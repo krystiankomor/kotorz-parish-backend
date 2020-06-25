@@ -11,6 +11,8 @@ import pl.kotorz.backend.baptized.Baptized;
 import pl.kotorz.backend.baptized.BaptizedRepository;
 import pl.kotorz.backend.decedent.Decedent;
 import pl.kotorz.backend.decedent.DecedentRepository;
+import pl.kotorz.backend.page.Page;
+import pl.kotorz.backend.page.PageRepository;
 import pl.kotorz.backend.post.Post;
 import pl.kotorz.backend.post.PostRepository;
 import pl.kotorz.backend.user.User;
@@ -29,6 +31,9 @@ public class InitializeSampleData implements ApplicationRunner {
 
     @Autowired
     DecedentRepository decedentRepository;
+
+    @Autowired
+    PageRepository pageRepository;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -78,5 +83,9 @@ public class InitializeSampleData implements ApplicationRunner {
         decedentMattMurphy.setDeathDate(LocalDate.of(2020, 3, 30));
         decedentRepository.save(decedentMattMurphy);
 
+        Page historyPage = new Page();
+        historyPage.setTitle("History");
+        historyPage.setBody("<p>It all begins in 1295.</p>");
+        pageRepository.save(historyPage);
     }
 }
