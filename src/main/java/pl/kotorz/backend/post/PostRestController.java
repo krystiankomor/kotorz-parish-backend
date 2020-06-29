@@ -11,6 +11,7 @@ import pl.kotorz.backend.util.dto.DTO;
  * @version v1
  * @author krystiankomor
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/posts")
 public class PostRestController {
@@ -24,7 +25,7 @@ public class PostRestController {
      */
     @GetMapping
     public Iterable<Post> getAllPosts() {
-        return postRepository.findAll();
+        return postRepository.findAllByOrderByDateDesc();
     }
 
     /**

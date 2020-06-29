@@ -23,4 +23,6 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 	 */
 	@Query("select distinct year(p.date) from Post p")
 	Iterable<Integer> findAllDateYears();
+
+	Iterable<Post> findAllByOrderByDateDesc();
 }
