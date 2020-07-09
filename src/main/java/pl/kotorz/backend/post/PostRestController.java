@@ -25,7 +25,7 @@ public class PostRestController {
      */
     @GetMapping
     public Iterable<Post> getAllPosts() {
-        return postRepository.findAllByOrderByDateDesc();
+        return postRepository.findAllByOrderByDateDescIdDesc();
     }
 
     /**
@@ -83,4 +83,12 @@ public class PostRestController {
         return postRepository.findAllByYear(year);
     }
 
+    /**
+     * Method for delete post of given ID.
+     * @param id ID of the post to delete
+     */
+    @DeleteMapping("/{id}")
+    public void deletePost(@PathVariable Long id) {
+        postRepository.deleteById(id);
+    }
 }
