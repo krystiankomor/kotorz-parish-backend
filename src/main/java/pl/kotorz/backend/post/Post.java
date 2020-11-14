@@ -52,6 +52,12 @@ public class Post {
     @ManyToOne
     private User author;
 
+    public void setTitle(String title) {
+        this.title = title;
+
+        makeSlug();
+    }
+    
     /**
      * Generate a SEO-friendly slug based on title.
      * If generated slug is empty, it generates UUIDv4
